@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		370B9A042BA33D0000169213 /* simd+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B9A032BA33D0000169213 /* simd+extension.swift */; };
+		370B9A062BA5E17600169213 /* Opener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B9A052BA5E17600169213 /* Opener.swift */; };
 		379B22B62B9C70D0007BF19D /* DiceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B22B52B9C70D0007BF19D /* DiceApp.swift */; };
 		379B22B82B9C70D0007BF19D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B22B72B9C70D0007BF19D /* ContentView.swift */; };
 		379B22BA2B9C70D2007BF19D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 379B22B92B9C70D2007BF19D /* Assets.xcassets */; };
@@ -27,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		370B9A032BA33D0000169213 /* simd+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "simd+extension.swift"; sourceTree = "<group>"; };
+		370B9A052BA5E17600169213 /* Opener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opener.swift; sourceTree = "<group>"; };
 		379B22AE2B9C70D0007BF19D /* Dice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		379B22B52B9C70D0007BF19D /* DiceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceApp.swift; sourceTree = "<group>"; };
 		379B22B72B9C70D0007BF19D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -81,7 +85,9 @@
 			isa = PBXGroup;
 			children = (
 				379B22B52B9C70D0007BF19D /* DiceApp.swift */,
+				370B9A052BA5E17600169213 /* Opener.swift */,
 				379B22B72B9C70D0007BF19D /* ContentView.swift */,
+				370B9A032BA33D0000169213 /* simd+extension.swift */,
 				379B22B92B9C70D2007BF19D /* Assets.xcassets */,
 				379B22BE2B9C70D2007BF19D /* Info.plist */,
 				379B22BB2B9C70D2007BF19D /* Preview Content */,
@@ -224,8 +230,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				370B9A062BA5E17600169213 /* Opener.swift in Sources */,
 				379B22B82B9C70D0007BF19D /* ContentView.swift in Sources */,
 				379B22B62B9C70D0007BF19D /* DiceApp.swift in Sources */,
+				370B9A042BA33D0000169213 /* simd+extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
