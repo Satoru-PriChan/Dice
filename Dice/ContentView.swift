@@ -35,19 +35,10 @@ struct ContentView: View {
                     let dt = event.deltaTime
                     let toDeviceTransform = pose.originFromAnchorTransform
                     print("dt: \(dt), toDeviceTransform: \(toDeviceTransform)")
-//                    let devicePosition = toDeviceTransform.translation
-//                    deviceRotation = toDeviceTransform.upper3x3
-//                    scene.position = devicePosition
-                    scene.transform = .init(
-                        matrix: 
-                                .init(toDeviceTransform.columns.0,
-                                      toDeviceTransform.columns.1,
-                                      toDeviceTransform.columns.2,
-                                      .init(
-                                        x: toDeviceTransform.columns.3.x, 
-                                        y: toDeviceTransform.columns.3.y,
-                                        z: toDeviceTransform.columns.3.z - 1.0, w: toDeviceTransform.columns.3.w)
-                                     )
+                    scene.position = .init(
+                        x: toDeviceTransform.translation.x,
+                        y: toDeviceTransform.translation.y,
+                        z: toDeviceTransform.translation.z - 1.0// You need to minus one to show the 3D object right in front of the camera
                     )
                     
                 } as? any Cancellable
