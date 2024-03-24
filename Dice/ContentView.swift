@@ -21,9 +21,6 @@ struct ContentView: View {
     @State var sceneUpdateSubscription : Cancellable? = nil
 
     var body: some View {
-        
-        
-        
         VStack {
             RealityView {  content in
                 
