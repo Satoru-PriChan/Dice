@@ -23,36 +23,32 @@ struct ContentView: View {
     var body: some View {
         VStack {
             RealityView {  content in
-                
                 try? await session.run([worldInfoProvider])
                 
                 // Called per every frame
                 sceneUpdateSubscription = content.subscribe(to: SceneEvents.Update.self) { event in
                     guard let pose = worldInfoProvider.queryDeviceAnchor(atTimestamp: CACurrentMediaTime()) else { return }
                     let dt = event.deltaTime
-                    let toDeviceTransform = pose.originFromAnchorTransform
-                    print("dt: \(dt), toDeviceTransform: \(toDeviceTransform)")
-//                    let devicePosition = toDeviceTransform.translation
-//                    deviceRotation = toDeviceTransform.upper3x3
-//                    scene.position = devicePosition
-                    scene.transform = .init(
-                        matrix: 
-                                .init(toDeviceTransform.columns.0,
-                                      toDeviceTransform.columns.1,
-                                      toDeviceTransform.columns.2,
-                                      .init(
-                                        x: toDeviceTransform.columns.3.x, 
-                                        y: toDeviceTransform.columns.3.y,
-                                        z: toDeviceTransform.columns.3.z - 1.0, w: toDeviceTransform.columns.3.w)
-                                     )
+                    let originFromAnchorTransform = pose.originFromAnchorTransform
+
+                    print("scene.position: \(scene.position), originFromAnchorTransform: \(originFromAnchorTransform)")
+                    // Keep the entity looking at the device position
+                    scene.look(
+                        at: originFromAnchorTransform.translation,
+                        from: .init(x: 0.0, y: 1.5, z: -1.0),// 1.5 is the same height with the device
+                        relativeTo: nil
                     )
-                    
                 } as? any Cancellable
                 
                 // Add the initial RealityKit content
                 if let scene = try? await Entity(named: "Scene", in: diceContentBundle) {
                     self.scene = scene
                     content.add(scene)
+                    scene.position = .init(
+                        x: 0.0,
+                        y: 1.5,
+                        z: -1.0
+                    )
                 }
             } update: { content in
                 // Update the RealityKit content when SwiftUI state changes
