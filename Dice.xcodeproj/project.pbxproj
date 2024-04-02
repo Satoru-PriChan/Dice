@@ -10,6 +10,8 @@
 		370B9A042BA33D0000169213 /* simd+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B9A032BA33D0000169213 /* simd+extension.swift */; };
 		370B9A062BA5E17600169213 /* Opener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B9A052BA5E17600169213 /* Opener.swift */; };
 		370B9A082BB0970200169213 /* Angle+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B9A072BB0970200169213 /* Angle+extension.swift */; };
+		378F1A352BBC8C3C00194BD5 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378F1A342BBC8C3C00194BD5 /* ContentViewModel.swift */; };
+		378F1A372BBC974900194BD5 /* ContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378F1A362BBC974900194BD5 /* ContentModel.swift */; };
 		379B22B62B9C70D0007BF19D /* DiceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B22B52B9C70D0007BF19D /* DiceApp.swift */; };
 		379B22B82B9C70D0007BF19D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B22B72B9C70D0007BF19D /* ContentView.swift */; };
 		379B22BA2B9C70D2007BF19D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 379B22B92B9C70D2007BF19D /* Assets.xcassets */; };
@@ -33,6 +35,8 @@
 		370B9A032BA33D0000169213 /* simd+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "simd+extension.swift"; sourceTree = "<group>"; };
 		370B9A052BA5E17600169213 /* Opener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opener.swift; sourceTree = "<group>"; };
 		370B9A072BB0970200169213 /* Angle+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Angle+extension.swift"; sourceTree = "<group>"; };
+		378F1A342BBC8C3C00194BD5 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		378F1A362BBC974900194BD5 /* ContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentModel.swift; sourceTree = "<group>"; };
 		379B22AE2B9C70D0007BF19D /* Dice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		379B22B52B9C70D0007BF19D /* DiceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceApp.swift; sourceTree = "<group>"; };
 		379B22B72B9C70D0007BF19D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -63,6 +67,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		378F1A302BBC8C1300194BD5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				370B9A052BA5E17600169213 /* Opener.swift */,
+				379B22B72B9C70D0007BF19D /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		378F1A312BBC8C1700194BD5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				378F1A342BBC8C3C00194BD5 /* ContentViewModel.swift */,
+				378F1A362BBC974900194BD5 /* ContentModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		378F1A322BBC8C2200194BD5 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		378F1A332BBC8C2900194BD5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				370B9A032BA33D0000169213 /* simd+extension.swift */,
+				370B9A072BB0970200169213 /* Angle+extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		379B22A52B9C70D0007BF19D = {
 			isa = PBXGroup;
 			children = (
@@ -87,10 +125,10 @@
 			isa = PBXGroup;
 			children = (
 				379B22B52B9C70D0007BF19D /* DiceApp.swift */,
-				370B9A052BA5E17600169213 /* Opener.swift */,
-				379B22B72B9C70D0007BF19D /* ContentView.swift */,
-				370B9A032BA33D0000169213 /* simd+extension.swift */,
-				370B9A072BB0970200169213 /* Angle+extension.swift */,
+				378F1A332BBC8C2900194BD5 /* Extensions */,
+				378F1A322BBC8C2200194BD5 /* Util */,
+				378F1A312BBC8C1700194BD5 /* Model */,
+				378F1A302BBC8C1300194BD5 /* View */,
 				379B22B92B9C70D2007BF19D /* Assets.xcassets */,
 				379B22BE2B9C70D2007BF19D /* Info.plist */,
 				379B22BB2B9C70D2007BF19D /* Preview Content */,
@@ -235,8 +273,10 @@
 			files = (
 				370B9A082BB0970200169213 /* Angle+extension.swift in Sources */,
 				370B9A062BA5E17600169213 /* Opener.swift in Sources */,
+				378F1A352BBC8C3C00194BD5 /* ContentViewModel.swift in Sources */,
 				379B22B82B9C70D0007BF19D /* ContentView.swift in Sources */,
 				379B22B62B9C70D0007BF19D /* DiceApp.swift in Sources */,
+				378F1A372BBC974900194BD5 /* ContentModel.swift in Sources */,
 				370B9A042BA33D0000169213 /* simd+extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
