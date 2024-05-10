@@ -26,13 +26,13 @@ class ContentViewModel: ObservableObject {
     func onUpdateSceneEvents() {
         guard let pose = worldInfoProvider.queryDeviceAnchor(atTimestamp: CACurrentMediaTime()) else { return }
         let originFromAnchorTransform = pose.originFromAnchorTransform
-        print("ContentViewModel: onUpdateSceneEvents: originFromAnchorTransform: \(originFromAnchorTransform)")
         // Keep the entity looking at the device position
         model.look = .init(at: originFromAnchorTransform.translation, from: entityInitialPosition)
     }
 
     func onTapDiceEntity() {
-        model.diceEnlargeStrategy = model.diceEnlargeStrategy.toggle()
+        model.spin = ContentDiceSpinStrategy.allCases.randomElement() ?? .five
+        print("spin: \(model.spin)")
     }
     
     func onToggleTapped(_ isOn: Bool) {

@@ -39,6 +39,10 @@ struct ContentView: View {
                 if let lookParam = viewModel.model.look {
                     diceEntity.look(at: lookParam.at, from: lookParam.from, relativeTo: nil)
                 }
+                
+                if let rotation = viewModel.model.spin.rotation {
+                    diceEntity.setOrientation(rotation, relativeTo: nil)
+                }
                 diceEntity.transform.scale = viewModel.model.diceEnlargeStrategy.scale
             }
             .gesture(TapGesture().targetedToAnyEntity().onEnded { _ in

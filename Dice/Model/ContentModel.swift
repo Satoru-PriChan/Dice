@@ -8,9 +8,11 @@
 import Foundation
 import simd
 
+
 struct ContentModel {
     var look: ContentLookParam? = nil
     var diceEnlargeStrategy: ContentDiceEnlargeStrategy = .normal
+    var spin: ContentDiceSpinStrategy = .five
 }
 
 struct ContentLookParam {
@@ -50,6 +52,32 @@ enum ContentDiceEnlargeStrategy {
             .enlarge
         case .enlarge:
             .normal
+        }
+    }
+}
+
+enum ContentDiceSpinStrategy: CaseIterable {
+    case one
+    case two
+    case three
+    case four
+    case five
+    case six
+    
+    var rotation: simd_quatf? {
+        switch self {
+        case .one:
+            return .init(angle: .zero, axis: .init(x: 1, y: 0, z: 0))
+        case .two:
+            return .init(angle: Float.pi / 2, axis: .init(x: 1, y: 0, z: 0))
+        case .three:
+            return .init(angle: Float.pi * 3 / 2, axis: .init(x: 0, y: 1, z: 0))
+        case .four:
+            return .init(angle: Float.pi / 2, axis: .init(x: 0, y: 1, z: 0))
+        case .five:
+            return .init(angle: Float.pi, axis: .init(x: 1, y: 0, z: 0))
+        case .six:
+            return .init(angle: Float.pi * 3 / 2, axis: .init(x: 1, y: 0, z: 0))
         }
     }
 }
