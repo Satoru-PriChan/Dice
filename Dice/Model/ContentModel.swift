@@ -15,7 +15,7 @@ struct ContentModel {
     var spin: ContentDiceSpinStrategy = .five
 }
 
-struct ContentLookParam {
+struct ContentLookParam: Equatable {
     let at: SIMD3<Float>
     let from: SIMD3<Float>
 }

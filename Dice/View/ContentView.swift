@@ -34,20 +34,24 @@ struct ContentView: View {
                     content.add(diceEntity)
                     diceEntity.position = viewModel.entityInitialPosition
                 }
-            } update: { content in
-                // Update the RealityKit content when SwiftUI state changes
-                if let lookParam = viewModel.model.look {
-                    diceEntity.look(at: lookParam.at, from: lookParam.from, relativeTo: nil)
-                }
-                
-                if let rotation = viewModel.model.spin.rotation {
-                    diceEntity.setOrientation(rotation, relativeTo: nil)
-                }
-                diceEntity.transform.scale = viewModel.model.diceEnlargeStrategy.scale
             }
             .gesture(TapGesture().targetedToAnyEntity().onEnded { _ in
                 viewModel.onTapDiceEntity()
             })
+            .onChange(of: viewModel.model.look) {
+                if let lookParam = viewModel.model.look {
+                    diceEntity.look(at: lookParam.at, from: lookParam.from, relativeTo: nil)
+                }
+            }
+            .onChange(of: viewModel.model.spin.rotation) {
+                if let rotation = viewModel.model.spin.rotation {
+                    diceEntity.randomSpin()
+                    diceEntity.setOrientation(rotation, relativeTo: nil)
+                }
+            }
+            .onChange(of: viewModel.model.diceEnlargeStrategy.scale) {
+                diceEntity.transform.scale = viewModel.model.diceEnlargeStrategy.scale
+            }
 
             VStack {
                 Toggle(
