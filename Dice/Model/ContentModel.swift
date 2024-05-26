@@ -10,14 +10,8 @@ import simd
 
 
 struct ContentModel {
-    var look: ContentLookParam? = nil
     var diceEnlargeStrategy: ContentDiceEnlargeStrategy = .normal
     var spin: ContentDiceSpinStrategy = .five
-}
-
-struct ContentLookParam: Equatable {
-    let at: SIMD3<Float>
-    let from: SIMD3<Float>
 }
 
 enum ContentDiceEnlargeStrategy {

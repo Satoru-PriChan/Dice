@@ -38,11 +38,6 @@ struct ContentView: View {
             .gesture(TapGesture().targetedToAnyEntity().onEnded { _ in
                 viewModel.onTapDiceEntity()
             })
-            .onChange(of: viewModel.model.look) {
-                if let lookParam = viewModel.model.look {
-                    diceEntity.look(at: lookParam.at, from: lookParam.from, relativeTo: nil)
-                }
-            }
             .onChange(of: viewModel.model.spin.rotation) {
                 if let rotation = viewModel.model.spin.rotation {
                     diceEntity.randomSpin()

@@ -26,8 +26,6 @@ class ContentViewModel: ObservableObject {
     func onUpdateSceneEvents() {
         guard let pose = worldInfoProvider.queryDeviceAnchor(atTimestamp: CACurrentMediaTime()) else { return }
         let originFromAnchorTransform = pose.originFromAnchorTransform
-        // Keep the entity looking at the device position
-        model.look = .init(at: originFromAnchorTransform.translation, from: entityInitialPosition)
     }
 
     func onTapDiceEntity() {
