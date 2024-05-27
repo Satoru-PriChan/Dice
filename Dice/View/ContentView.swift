@@ -35,7 +35,7 @@ struct ContentView: View {
                     diceEntity.position = viewModel.entityInitialPosition
                 }
             }
-            .gesture(TapGesture().targetedToAnyEntity().onEnded { _ in
+            .gesture(TapGesture().targetedToEntity(diceEntity).onEnded { _ in
                 viewModel.onTapDiceEntity()
             })
             .onChange(of: viewModel.model.spin.rotation) {
