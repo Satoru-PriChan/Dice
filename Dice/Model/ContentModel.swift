@@ -12,6 +12,8 @@ import simd
 struct ContentModel {
     var diceEnlargeStrategy: ContentDiceEnlargeStrategy = .normal
     var spin: ContentDiceSpinStrategy = .five
+    /// Entity's position
+    var position: SIMD3<Float> = .init(x: 0.0, y: 1.5, z: -1.0)// Just in front of the user's face
 }
 
 enum ContentDiceEnlargeStrategy {

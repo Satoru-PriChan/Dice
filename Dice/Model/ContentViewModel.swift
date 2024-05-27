@@ -14,8 +14,6 @@ class ContentViewModel: ObservableObject {
     
     private let session = ARKitSession()
     private let worldInfoProvider = WorldTrackingProvider()
-
-    let entityInitialPosition: SIMD3<Float> = .init(x: 0.0, y: 1.5, z: -1.0)// Just in front of the user's face
     @Published
     var model: ContentModel = ContentModel()
 
@@ -24,13 +22,20 @@ class ContentViewModel: ObservableObject {
     }
     
     func onUpdateSceneEvents() {
-        guard let pose = worldInfoProvider.queryDeviceAnchor(atTimestamp: CACurrentMediaTime()) else { return }
-        let originFromAnchorTransform = pose.originFromAnchorTransform
+        // Example
+        //        guard let pose = worldInfoProvider.queryDeviceAnchor(atTimestamp: CACurrentMediaTime()) else { return }
+        //        let originFromAnchorTransform = pose.originFromAnchorTransform
     }
 
     func onTapDiceEntity() {
         model.spin = ContentDiceSpinStrategy.allCases.randomElement() ?? .five
         print("spin: \(model.spin)")
+    }
+    
+    func onDragDiceEntity(x: Float, y: Float, z: Float) {
+        model.position.x += x*0.0001
+        model.position.y += y*0.0001
+        model.position.z += z*0.0001
     }
     
     func onToggleTapped(_ isOn: Bool) {
