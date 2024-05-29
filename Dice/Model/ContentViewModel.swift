@@ -9,6 +9,7 @@ import ARKit
 import Combine
 import Foundation
 import QuartzCore
+import Spatial
 
 class ContentViewModel: ObservableObject {
     
@@ -36,6 +37,10 @@ class ContentViewModel: ObservableObject {
         model.position.x += x*0.0001
         model.position.y += y*0.0001
         model.position.z += z*0.0001
+    }
+    
+    func onRotateDiceEntity(_ rotation: Rotation3D) {
+        model.rotation = simd_quatf(rotation)
     }
     
     func onToggleTapped(_ isOn: Bool) {

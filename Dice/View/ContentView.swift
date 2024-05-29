@@ -39,12 +39,16 @@ struct ContentView: View {
                 viewModel.onTapDiceEntity()
             })
             .gesture(DragGesture().targetedToEntity(diceEntity).onChanged { value in
-                print("on drag translation3d: \(value.translation3D), x: \(Float(value.translation3D.x)), y: \(Float(value.translation3D.y)), z: \(Float(value.translation3D.z))")
+                print("drag")
                 viewModel.onDragDiceEntity(
                     x: Float(value.translation3D.x),
                     y: Float(value.translation3D.y),
                     z: Float(value.translation3D.z)
                 )
+            })
+            .gesture(RotateGesture3D().targetedToEntity(diceEntity).onChanged { value in
+                print("rotate")
+                viewModel.onRotateDiceEntity(value.rotation)
             })
             .onChange(of: viewModel.model.spin.rotation) {
                 if let rotation = viewModel.model.spin.rotation {
@@ -58,6 +62,9 @@ struct ContentView: View {
             .onChange(of: viewModel.model.position) { oldValue, newValue in
                 print("viewModel.model.position oldValue: \(oldValue), newValue: \(newValue)")
                 diceEntity.transform.translation = newValue
+            }
+            .onChange(of: viewModel.model.rotation) { _, rotation in
+                diceEntity.transform.rotation = rotation
             }
 
             VStack {
