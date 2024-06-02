@@ -46,6 +46,17 @@ struct ContentView: View {
                     z: Float(value.translation3D.z)
                 )
             })
+            .gesture(MagnifyGesture().targetedToEntity(diceEntity)
+                .onChanged({ value in
+                    viewModel.onMagnifyEntity(
+                        [
+                            Float(value.gestureValue.magnification),
+                            Float(value.gestureValue.magnification),
+                            Float(value.gestureValue.magnification)
+                        ]
+                    )
+                })
+            )
             .onChange(of: viewModel.model.spin.rotation) {
                 if let rotation = viewModel.model.spin.rotation {
                     diceEntity.randomSpin()
@@ -58,6 +69,9 @@ struct ContentView: View {
             .onChange(of: viewModel.model.position) { oldValue, newValue in
                 print("viewModel.model.position oldValue: \(oldValue), newValue: \(newValue)")
                 diceEntity.transform.translation = newValue
+            }
+            .onChange(of: viewModel.model.magnify) { oldValue, newValue in
+                diceEntity.transform.scale = newValue
             }
 
             VStack {

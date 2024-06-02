@@ -38,6 +38,10 @@ class ContentViewModel: ObservableObject {
         model.position.z += z*0.0001
     }
     
+    func onMagnifyEntity(_ magnification: SIMD3<Float>) {
+        model.magnify = magnification
+    }
+    
     func onToggleTapped(_ isOn: Bool) {
         model.diceEnlargeStrategy = .init(isOn)
     }
