@@ -13,8 +13,9 @@ struct DiceApp: App {
     
     var body: some Scene {
         WindowGroup {
-            Opener()
-        }.windowStyle(.volumetric)
+            //Opener()
+            MenuView()
+        }.windowStyle(.plain)
         
         ImmersiveSpace(
             id: "Dice") {
