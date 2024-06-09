@@ -20,7 +20,7 @@ struct MenuView: View {
 
 struct MenuDiceListView: View {
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 Text("Dice List View")
                     .font(.largeTitle)
