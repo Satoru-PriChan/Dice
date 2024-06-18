@@ -29,7 +29,7 @@ struct ImmersiveView: View {
                 } as? any Cancellable
                 
                 // Add the initial RealityKit content
-                if let diceEntity = try? await Entity(named: "Scene", in: diceContentBundle) {
+                if let diceEntity = try? await Entity(named: "Standard", in: diceContentBundle) {
                     self.diceEntity = diceEntity
                     content.add(diceEntity)
                     diceEntity.position = viewModel.model.position
