@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  ImmersiveView.swift
 //  Dice
 //
 //  Created by kento.yamazaki on 2024/03/09.
@@ -12,7 +12,7 @@ import RealityKit
 import simd
 import SwiftUI
 
-struct ContentView: View {
+struct ImmersiveView: View {
 
     @State private var diceEntity = Entity()
     @State private var enlarge = false
@@ -89,5 +89,5 @@ struct ContentView: View {
 }
 
 #Preview(windowStyle: .volumetric) {
-    ContentView()
+    ImmersiveView()
 }

@@ -19,7 +19,7 @@ struct DiceApp: App {
         
         ImmersiveSpace(
             id: "Dice") {
-                ContentView()
+            ImmersiveView()
         }
             .immersionStyle(
                 selection: $immersionStyle, in: .mixed)

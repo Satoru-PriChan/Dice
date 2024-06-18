@@ -10,7 +10,7 @@ import Combine
 import Foundation
 import QuartzCore
 
-class ContentViewModel: ObservableObject {
+final class ContentViewModel: ObservableObject {
     
     private let session = ARKitSession()
     private let worldInfoProvider = WorldTrackingProvider()
