@@ -1,6 +1,14 @@
 {
   "pathsToIds" : {
+    "DiceContent\/Sources\/DiceContent\/DiceContent.rkassets\/Chic Red and Blue.usdz" : "D9AD1957-766E-43CD-B7E9-17FDF14DF8DC",
+    "DiceContent\/Sources\/DiceContent\/DiceContent.rkassets\/Chic%20Red%20and%20Blue.usda" : "6E83A380-6A00-473B-B3CE-8D97DD714059",
+    "DiceContent\/Sources\/DiceContent\/DiceContent.rkassets\/Heart.usda" : "2E78DB1E-A844-4DC5-8B0B-2521333DF0E2",
+    "DiceContent\/Sources\/DiceContent\/DiceContent.rkassets\/Oogie%20Boogie%20Skull.usda" : "777C6D95-858D-40F3-B459-31F4D384F406",
     "DiceContent\/Sources\/DiceContent\/DiceContent.rkassets\/Scene.usda" : "DE99BB51-5FD9-46CC-A430-BD427F7E9FB0",
-    "DiceContent\/Sources\/DiceContent\/DiceContent.rkassets\/Standard.usda" : "677B7511-E87D-4D60-A9B5-0F8C76664731"
+    "DiceContent\/Sources\/DiceContent\/DiceContent.rkassets\/Standard.usda" : "677B7511-E87D-4D60-A9B5-0F8C76664731",
+    "DiceContent\/Sources\/DiceContent\/DiceContent.rkassets\/Summertime.usda" : "95E6A6DA-EE32-4924-A78B-19C3C95D2241",
+    "DiceContent\/Sources\/DiceContent\/DiceContent.rkassets\/Twenty.usda" : "555A0346-5014-4F5C-B600-3CE1013361C7",
+    "DiceContent\/Sources\/DiceContent\/DiceContent.rkassets\/Wooden.usda" : "5DBC8ED8-0DEC-4268-A8A0-74FE11D3D1E7",
+    "DiceContent\/Sources\/DiceContent\/DiceContent.rkassets\/Worn%20Out.usda" : "9F3FB397-CF7B-4DBD-A73D-871D83507BBF"
   }
 }
