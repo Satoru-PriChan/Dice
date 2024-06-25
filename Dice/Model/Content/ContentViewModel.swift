@@ -10,6 +10,7 @@ import Combine
 import Foundation
 import QuartzCore
 
+@MainActor
 final class ContentViewModel: ObservableObject {
     
     private let session = ARKitSession()

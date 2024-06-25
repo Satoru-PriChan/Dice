@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct DiceApp: App {
-    @State var immersionStyle: ImmersionStyle = .mixed
+    @State var immersionStyle: any ImmersionStyle = .mixed
     
     var body: some Scene {
         WindowGroup {
