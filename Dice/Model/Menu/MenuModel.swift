@@ -13,7 +13,7 @@ struct MenuModel {
 
 struct MenuDiceListModel {
     var displayType: MenuDiceListDisplayType = .theme
-    var list: [MenuDiceListDice] = []
+    var list: [MenuDiceModel] = []
 }
 ///  How to display dice list
 enum MenuDiceListDisplayType {
@@ -23,9 +23,13 @@ enum MenuDiceListDisplayType {
     case numberOfSides
 }
 
-struct MenuDiceListDice {
+struct MenuDiceModel {
     /// Name of 3D Model to pass the initializer of Entity(RealityKit)
     var modelName: String = ""
+    var displayName: String = ""
+    
+    /// ???
+    //var image
 }
 
 enum MenuDiceListDiceTheme {
