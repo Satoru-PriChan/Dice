@@ -52,6 +52,33 @@
       [
         "555A0346-5014-4F5C-B600-3CE1013361C7",
         "Root",
+        "Twenty"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "555A0346-5014-4F5C-B600-3CE1013361C7",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "555A0346-5014-4F5C-B600-3CE1013361C7",
+        "Root",
+        "Twenty",
+        "Meshes"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "555A0346-5014-4F5C-B600-3CE1013361C7",
+        "Root",
         "Twenty",
         "Meshes",
         "Sketchfab_model",
@@ -75,38 +102,11 @@
       },
       [
         "555A0346-5014-4F5C-B600-3CE1013361C7",
-        "Root"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "555A0346-5014-4F5C-B600-3CE1013361C7",
-        "Root",
-        "Twenty"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "555A0346-5014-4F5C-B600-3CE1013361C7",
         "Root",
         "Twenty",
         "Meshes",
         "Sketchfab_model",
         "Collada_visual_scene_group"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "555A0346-5014-4F5C-B600-3CE1013361C7",
-        "Root",
-        "Twenty",
-        "Meshes"
       ],
       {
         "isExpanded" : true,

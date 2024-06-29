@@ -88,6 +88,6 @@ struct ImmersiveView: View {
     }
 }
 
-#Preview(windowStyle: .volumetric) {
+#Preview(windowStyle: .plain) {
     ImmersiveView()
 }

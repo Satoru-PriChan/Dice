@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		370675602C2C43EC0059FAAF /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3706755F2C2C43EC0059FAAF /* MenuViewModel.swift */; };
 		370B9A042BA33D0000169213 /* simd+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B9A032BA33D0000169213 /* simd+extension.swift */; };
 		370B9A062BA5E17600169213 /* Opener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B9A052BA5E17600169213 /* Opener.swift */; };
 		370B9A082BB0970200169213 /* Angle+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B9A072BB0970200169213 /* Angle+extension.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3706755F2C2C43EC0059FAAF /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		370B9A032BA33D0000169213 /* simd+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "simd+extension.swift"; sourceTree = "<group>"; };
 		370B9A052BA5E17600169213 /* Opener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opener.swift; sourceTree = "<group>"; };
 		370B9A072BB0970200169213 /* Angle+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Angle+extension.swift"; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				376DDBDA2C1D322800F231A9 /* MenuModel.swift */,
+				3706755F2C2C43EC0059FAAF /* MenuViewModel.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				370B9A082BB0970200169213 /* Angle+extension.swift in Sources */,
+				370675602C2C43EC0059FAAF /* MenuViewModel.swift in Sources */,
 				370B9A062BA5E17600169213 /* Opener.swift in Sources */,
 				378F1A352BBC8C3C00194BD5 /* ContentViewModel.swift in Sources */,
 				376DDBD92C1D2FCA00F231A9 /* AppViewModel.swift in Sources */,
@@ -437,6 +441,7 @@
 				SWIFT_UPCOMING_FEATURE_ISOLATED_DEFAULT_VALUES = YES;
 				SWIFT_UPCOMING_FEATURE_REGION_BASED_ISOLATION = YES;
 				XROS_DEPLOYMENT_TARGET = 1.0;
+				_EXPERIMENTAL_SWIFT_EXPLICIT_MODULES = YES;
 			};
 			name = Debug;
 		};
@@ -506,6 +511,7 @@
 				SWIFT_UPCOMING_FEATURE_REGION_BASED_ISOLATION = YES;
 				VALIDATE_PRODUCT = YES;
 				XROS_DEPLOYMENT_TARGET = 1.0;
+				_EXPERIMENTAL_SWIFT_EXPLICIT_MODULES = YES;
 			};
 			name = Release;
 		};
@@ -532,6 +538,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
@@ -558,6 +565,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
