@@ -25,6 +25,15 @@ enum MenuAlertSignal {
             false
         }
     }
+    
+    var message: String {
+        switch self {
+        case .show(let dice):
+            dice.licenseInfo
+        case .hide:
+            ""
+        }
+    }
 }
 
 struct MenuDiceListModel {

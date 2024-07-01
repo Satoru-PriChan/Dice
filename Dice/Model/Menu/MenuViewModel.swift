@@ -28,6 +28,11 @@ class MenuDiceListViewModel: ObservableObject {
         model.alertSignal = .show(dice: dice)
     }
     
+    
+    func onTapAlertOK() {
+        model.alertSignal = .hide
+    }
+    
     func onSelectDisplayType(_ type: MenuDiceListDisplayType) {
         model.diceListModel.displayType = type
         sortDiceList()

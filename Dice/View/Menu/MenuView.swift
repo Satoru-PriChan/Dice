@@ -81,6 +81,17 @@ struct MenuDiceListView: View {
                 .navigationTitle("Dice")
             }
         }
+        .alert(
+            viewModel.model.alertSignal.message,
+            isPresented: Binding<Bool>(
+                get: {
+                    viewModel.model.alertSignal.shouldShow
+                }, set: {_ in })
+        ) {
+            Button("OK") {
+                viewModel.onTapAlertOK()
+            }
+        }
     }
 }
 
