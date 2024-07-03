@@ -16,6 +16,7 @@
 		376DDBD72C1D2F5100F231A9 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376DDBD62C1D2F5100F231A9 /* AppModel.swift */; };
 		376DDBD92C1D2FCA00F231A9 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376DDBD82C1D2FCA00F231A9 /* AppViewModel.swift */; };
 		376DDBDB2C1D322800F231A9 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376DDBDA2C1D322800F231A9 /* MenuModel.swift */; };
+		378865772C3535E5007DA4D8 /* DiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378865762C3535E5007DA4D8 /* DiceTest.swift */; };
 		378B38422BDA96C000EE61C1 /* Entity+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378B38412BDA96C000EE61C1 /* Entity+extension.swift */; };
 		378F1A352BBC8C3C00194BD5 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378F1A342BBC8C3C00194BD5 /* ContentViewModel.swift */; };
 		378F1A372BBC974900194BD5 /* ContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378F1A362BBC974900194BD5 /* ContentModel.swift */; };
@@ -23,7 +24,6 @@
 		379B22B82B9C70D0007BF19D /* ImmersiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B22B72B9C70D0007BF19D /* ImmersiveView.swift */; };
 		379B22BA2B9C70D2007BF19D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 379B22B92B9C70D2007BF19D /* Assets.xcassets */; };
 		379B22BD2B9C70D2007BF19D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 379B22BC2B9C70D2007BF19D /* Preview Assets.xcassets */; };
-		379B22C82B9C70D3007BF19D /* DiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B22C72B9C70D3007BF19D /* DiceTests.swift */; };
 		379B22D52BA08B72007BF19D /* DiceContent in Resources */ = {isa = PBXBuildFile; fileRef = 379B22D42BA08B72007BF19D /* DiceContent */; };
 		379B22D82BA08B92007BF19D /* DiceContent in Frameworks */ = {isa = PBXBuildFile; productRef = 379B22D72BA08B92007BF19D /* DiceContent */; };
 /* End PBXBuildFile section */
@@ -48,6 +48,8 @@
 		376DDBD62C1D2F5100F231A9 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		376DDBD82C1D2FCA00F231A9 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		376DDBDA2C1D322800F231A9 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
+		378865752C3535E4007DA4D8 /* DiceTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DiceTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		378865762C3535E5007DA4D8 /* DiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceTest.swift; sourceTree = "<group>"; };
 		378B38412BDA96C000EE61C1 /* Entity+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entity+extension.swift"; sourceTree = "<group>"; };
 		378F1A342BBC8C3C00194BD5 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		378F1A362BBC974900194BD5 /* ContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentModel.swift; sourceTree = "<group>"; };
@@ -58,7 +60,6 @@
 		379B22BC2B9C70D2007BF19D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		379B22BE2B9C70D2007BF19D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		379B22C32B9C70D3007BF19D /* DiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		379B22C72B9C70D3007BF19D /* DiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceTests.swift; sourceTree = "<group>"; };
 		379B22D42BA08B72007BF19D /* DiceContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DiceContent; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -216,7 +217,8 @@
 		379B22C62B9C70D3007BF19D /* DiceTests */ = {
 			isa = PBXGroup;
 			children = (
-				379B22C72B9C70D3007BF19D /* DiceTests.swift */,
+				378865762C3535E5007DA4D8 /* DiceTest.swift */,
+				378865752C3535E4007DA4D8 /* DiceTests-Bridging-Header.h */,
 			);
 			path = DiceTests;
 			sourceTree = "<group>";
@@ -284,6 +286,7 @@
 					};
 					379B22C22B9C70D3007BF19D = {
 						CreatedOnToolsVersion = 15.2;
+						LastSwiftMigration = 1600;
 						TestTargetID = 379B22AD2B9C70D0007BF19D;
 					};
 				};
@@ -353,7 +356,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				379B22C82B9C70D3007BF19D /* DiceTests.swift in Sources */,
+				378865772C3535E5007DA4D8 /* DiceTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,6 +576,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VWFXDPF5TY;
@@ -582,10 +586,12 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "DiceTests/DiceTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dice.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Dice";
-				XROS_DEPLOYMENT_TARGET = 1.0;
+				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
@@ -593,6 +599,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VWFXDPF5TY;
@@ -602,10 +609,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "DiceTests/DiceTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dice.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Dice";
-				XROS_DEPLOYMENT_TARGET = 1.0;
+				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
