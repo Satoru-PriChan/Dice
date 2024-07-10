@@ -20,6 +20,8 @@ struct MenuView: View {
 
 struct MenuDiceListView: View {
     @StateObject private var viewModel: MenuDiceListViewModel = MenuDiceListViewModel()
+    @EnvironmentObject private var appViewModel: AppViewModel
+
     var body: some View {
         NavigationStack {
             VStack {
@@ -50,7 +52,7 @@ struct MenuDiceListView: View {
                         ForEach(viewModel.model.diceListModel.list) { dice in
                             Button(action: {
                                 // Show 3D Entity
-                                print("Show 3D Entity")
+                                appViewModel.onTapShowEntityButton(dice)
                             }, label: {
                                 HStack {
                                     // 3D Entity preview

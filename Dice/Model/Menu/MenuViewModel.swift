@@ -24,7 +24,7 @@ class MenuDiceListViewModel: ObservableObject {
         }
     }
     
-    func onIMarkButtonTapped(_ dice: MenuDiceModel) {
+    func onIMarkButtonTapped(_ dice: AppDiceModel) {
         model.alertSignal = .show(dice: dice)
     }
     

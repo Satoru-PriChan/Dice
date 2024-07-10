@@ -9,19 +9,25 @@ import SwiftUI
 
 @main
 struct DiceApp: App {
-    @State var immersionStyle: any ImmersionStyle = .mixed
+    @State private var immersionStyle: any ImmersionStyle = .mixed
+    @State private var appViewModel: AppViewModel = .init()
     
     var body: some Scene {
         WindowGroup {
             //Opener()
             MenuView()
-        }.windowStyle(.plain)
+        }
+            .windowStyle(.plain)
+            .environmentObject(appViewModel)
+        
         
         ImmersiveSpace(
             id: "Dice") {
             ImmersiveView()
         }
             .immersionStyle(
-                selection: $immersionStyle, in: .mixed)
+                selection: $immersionStyle, in: .mixed
+            )
+            .environmentObject(appViewModel)
     }
 }

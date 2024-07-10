@@ -14,7 +14,6 @@
 		37191FC92BEF2E4A000C54AB /* Float+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37191FC82BEF2E4A000C54AB /* Float+extension.swift */; };
 		3766FA602C0F4E93008A4135 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3766FA5F2C0F4E93008A4135 /* MenuView.swift */; };
 		376DDBD72C1D2F5100F231A9 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376DDBD62C1D2F5100F231A9 /* AppModel.swift */; };
-		376DDBD92C1D2FCA00F231A9 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376DDBD82C1D2FCA00F231A9 /* AppViewModel.swift */; };
 		376DDBDB2C1D322800F231A9 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376DDBDA2C1D322800F231A9 /* MenuModel.swift */; };
 		378865772C3535E5007DA4D8 /* DiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378865762C3535E5007DA4D8 /* DiceTest.swift */; };
 		378B38422BDA96C000EE61C1 /* Entity+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378B38412BDA96C000EE61C1 /* Entity+extension.swift */; };
@@ -26,6 +25,7 @@
 		379B22BD2B9C70D2007BF19D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 379B22BC2B9C70D2007BF19D /* Preview Assets.xcassets */; };
 		379B22D52BA08B72007BF19D /* DiceContent in Resources */ = {isa = PBXBuildFile; fileRef = 379B22D42BA08B72007BF19D /* DiceContent */; };
 		379B22D82BA08B92007BF19D /* DiceContent in Frameworks */ = {isa = PBXBuildFile; productRef = 379B22D72BA08B92007BF19D /* DiceContent */; };
+		37F90E902C3E56D50029F28E /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F90E8F2C3E56D50029F28E /* AppViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +46,6 @@
 		37191FC82BEF2E4A000C54AB /* Float+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+extension.swift"; sourceTree = "<group>"; };
 		3766FA5F2C0F4E93008A4135 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		376DDBD62C1D2F5100F231A9 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
-		376DDBD82C1D2FCA00F231A9 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		376DDBDA2C1D322800F231A9 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 		378865752C3535E4007DA4D8 /* DiceTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DiceTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		378865762C3535E5007DA4D8 /* DiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceTest.swift; sourceTree = "<group>"; };
@@ -61,6 +60,7 @@
 		379B22BE2B9C70D2007BF19D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		379B22C32B9C70D3007BF19D /* DiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		379B22D42BA08B72007BF19D /* DiceContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DiceContent; sourceTree = "<group>"; };
+		37F90E8F2C3E56D50029F28E /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,8 +119,8 @@
 		377DD5EA2C155E1E00989497 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				376DDBD82C1D2FCA00F231A9 /* AppViewModel.swift */,
 				376DDBD62C1D2F5100F231A9 /* AppModel.swift */,
+				37F90E8F2C3E56D50029F28E /* AppViewModel.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -337,9 +337,9 @@
 			files = (
 				370B9A082BB0970200169213 /* Angle+extension.swift in Sources */,
 				370675602C2C43EC0059FAAF /* MenuViewModel.swift in Sources */,
+				37F90E902C3E56D50029F28E /* AppViewModel.swift in Sources */,
 				370B9A062BA5E17600169213 /* Opener.swift in Sources */,
 				378F1A352BBC8C3C00194BD5 /* ContentViewModel.swift in Sources */,
-				376DDBD92C1D2FCA00F231A9 /* AppViewModel.swift in Sources */,
 				379B22B82B9C70D0007BF19D /* ImmersiveView.swift in Sources */,
 				379B22B62B9C70D0007BF19D /* DiceApp.swift in Sources */,
 				3766FA602C0F4E93008A4135 /* MenuView.swift in Sources */,
@@ -588,7 +588,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "DiceTests/DiceTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dice.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Dice";
 				XROS_DEPLOYMENT_TARGET = 2.0;
@@ -610,7 +610,7 @@
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "DiceTests/DiceTests-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dice.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Dice";
 				XROS_DEPLOYMENT_TARGET = 2.0;
