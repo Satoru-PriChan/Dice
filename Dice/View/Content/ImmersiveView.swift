@@ -18,6 +18,7 @@ struct ImmersiveView: View {
     @State private var enlarge = false
     @State private var sceneUpdateSubscription : (any Cancellable)? = nil
     @StateObject private var viewModel: ContentViewModel = ContentViewModel()
+    @EnvironmentObject private var appViewModel: AppViewModel
 
     var body: some View {
         VStack {
@@ -72,6 +73,13 @@ struct ImmersiveView: View {
             }
             .onChange(of: viewModel.model.magnify) { oldValue, newValue in
                 diceEntity.transform.scale = newValue
+            }
+            .onChange(of: appViewModel.model.diceSet) { oldValue, newValue in
+                let insertedDices = newValue.subtracting(oldValue)
+                guard insertedDices.isEmpty == false else { return }
+                for insertedDice in insertedDices {
+                    // TODO: - Show 3D Entities
+                }
             }
 
             VStack {

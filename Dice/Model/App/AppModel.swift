@@ -9,15 +9,11 @@ import Foundation
 import simd
 
 struct AppModel {
-    var displayImmersiveSpaceStrategy: AppDisplayImmersiveSpaceStrategy = .hide
+    var shouldShowImmersiveView: Bool = false
+    var diceSet: Set<AppDiceModel> = Set<AppDiceModel>()
 }
 
-enum AppDisplayImmersiveSpaceStrategy {
-    case show(entities: [AppDiceModel])
-    case hide
-}
-
-struct AppDiceModel: Identifiable {
+struct AppDiceModel: Identifiable, Equatable, Hashable {
     let id: UUID = UUID()
     
     /// Name of 3D Model to pass the initializer of Entity(RealityKit)

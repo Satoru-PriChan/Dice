@@ -21,6 +21,8 @@ struct MenuView: View {
 struct MenuDiceListView: View {
     @StateObject private var viewModel: MenuDiceListViewModel = MenuDiceListViewModel()
     @EnvironmentObject private var appViewModel: AppViewModel
+    @Environment(\.openImmersiveSpace) private var openImmersiveSpace: OpenImmersiveSpaceAction
+    @Environment(\.dismissImmersiveSpace) private var dismissImmersiveSpace: DismissImmersiveSpaceAction
 
     var body: some View {
         NavigationStack {
@@ -92,6 +94,17 @@ struct MenuDiceListView: View {
         ) {
             Button("OK") {
                 viewModel.onTapAlertOK()
+            }
+        }
+        .onChange(of: appViewModel.model.shouldShowImmersiveView) { oldValue, newValue in
+            if oldValue == false && newValue {
+                Task {
+                    await openImmersiveSpace(id: "Dice")
+                }
+            } else if oldValue && newValue == false {
+                Task {
+                    await dismissImmersiveSpace()
+                }
             }
         }
     }

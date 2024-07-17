@@ -12,14 +12,10 @@ final class AppViewModel: ObservableObject {
     var model: AppModel = .init()
     
     func onTapShowEntityButton(_ dice: AppDiceModel) {
-        switch model.displayImmersiveSpaceStrategy {
-        case .show(let entities):
-            var entities = entities
-            entities.append(dice)
-            model.displayImmersiveSpaceStrategy = .show(entities: entities)
-        case .hide:
-            model.displayImmersiveSpaceStrategy = .show(entities: [dice])
+        if model.shouldShowImmersiveView == false {
+            model.shouldShowImmersiveView = true
         }
         
+        model.diceSet.insert(dice)
     }
 }
