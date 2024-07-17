@@ -17,8 +17,8 @@
 		376DDBDB2C1D322800F231A9 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376DDBDA2C1D322800F231A9 /* MenuModel.swift */; };
 		378865772C3535E5007DA4D8 /* DiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378865762C3535E5007DA4D8 /* DiceTest.swift */; };
 		378B38422BDA96C000EE61C1 /* Entity+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378B38412BDA96C000EE61C1 /* Entity+extension.swift */; };
-		378F1A352BBC8C3C00194BD5 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378F1A342BBC8C3C00194BD5 /* ContentViewModel.swift */; };
-		378F1A372BBC974900194BD5 /* ContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378F1A362BBC974900194BD5 /* ContentModel.swift */; };
+		378F1A352BBC8C3C00194BD5 /* ImmersiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378F1A342BBC8C3C00194BD5 /* ImmersiveViewModel.swift */; };
+		378F1A372BBC974900194BD5 /* ImmersiveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378F1A362BBC974900194BD5 /* ImmersiveModel.swift */; };
 		379B22B62B9C70D0007BF19D /* DiceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B22B52B9C70D0007BF19D /* DiceApp.swift */; };
 		379B22B82B9C70D0007BF19D /* ImmersiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B22B72B9C70D0007BF19D /* ImmersiveView.swift */; };
 		379B22BA2B9C70D2007BF19D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 379B22B92B9C70D2007BF19D /* Assets.xcassets */; };
@@ -50,8 +50,8 @@
 		378865752C3535E4007DA4D8 /* DiceTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DiceTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		378865762C3535E5007DA4D8 /* DiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceTest.swift; sourceTree = "<group>"; };
 		378B38412BDA96C000EE61C1 /* Entity+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entity+extension.swift"; sourceTree = "<group>"; };
-		378F1A342BBC8C3C00194BD5 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
-		378F1A362BBC974900194BD5 /* ContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentModel.swift; sourceTree = "<group>"; };
+		378F1A342BBC8C3C00194BD5 /* ImmersiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveViewModel.swift; sourceTree = "<group>"; };
+		378F1A362BBC974900194BD5 /* ImmersiveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveModel.swift; sourceTree = "<group>"; };
 		379B22AE2B9C70D0007BF19D /* Dice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		379B22B52B9C70D0007BF19D /* DiceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceApp.swift; sourceTree = "<group>"; };
 		379B22B72B9C70D0007BF19D /* ImmersiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveView.swift; sourceTree = "<group>"; };
@@ -101,8 +101,8 @@
 		3766FA632C0F4EB5008A4135 /* Content */ = {
 			isa = PBXGroup;
 			children = (
-				378F1A342BBC8C3C00194BD5 /* ContentViewModel.swift */,
-				378F1A362BBC974900194BD5 /* ContentModel.swift */,
+				378F1A342BBC8C3C00194BD5 /* ImmersiveViewModel.swift */,
+				378F1A362BBC974900194BD5 /* ImmersiveModel.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -339,12 +339,12 @@
 				370675602C2C43EC0059FAAF /* MenuViewModel.swift in Sources */,
 				37F90E902C3E56D50029F28E /* AppViewModel.swift in Sources */,
 				370B9A062BA5E17600169213 /* Opener.swift in Sources */,
-				378F1A352BBC8C3C00194BD5 /* ContentViewModel.swift in Sources */,
+				378F1A352BBC8C3C00194BD5 /* ImmersiveViewModel.swift in Sources */,
 				379B22B82B9C70D0007BF19D /* ImmersiveView.swift in Sources */,
 				379B22B62B9C70D0007BF19D /* DiceApp.swift in Sources */,
 				3766FA602C0F4E93008A4135 /* MenuView.swift in Sources */,
 				376DDBD72C1D2F5100F231A9 /* AppModel.swift in Sources */,
-				378F1A372BBC974900194BD5 /* ContentModel.swift in Sources */,
+				378F1A372BBC974900194BD5 /* ImmersiveModel.swift in Sources */,
 				376DDBDB2C1D322800F231A9 /* MenuModel.swift in Sources */,
 				378B38422BDA96C000EE61C1 /* Entity+extension.swift in Sources */,
 				37191FC92BEF2E4A000C54AB /* Float+extension.swift in Sources */,

@@ -17,7 +17,7 @@ struct ImmersiveView: View {
     @State private var diceEntity = Entity()
     @State private var enlarge = false
     @State private var sceneUpdateSubscription : (any Cancellable)? = nil
-    @StateObject private var viewModel: ContentViewModel = ContentViewModel()
+    @StateObject private var viewModel: ImmersiveViewModel = ImmersiveViewModel()
     @EnvironmentObject private var appViewModel: AppViewModel
 
     var body: some View {

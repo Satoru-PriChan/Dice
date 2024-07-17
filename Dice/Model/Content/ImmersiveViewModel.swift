@@ -1,5 +1,5 @@
 //
-//  ContentViewModel.swift
+//  ImmersiveViewModel.swift
 //  Dice
 //
 //  Created by kento.yamazaki on 2024/04/03.
@@ -11,12 +11,12 @@ import Foundation
 import QuartzCore
 
 @MainActor
-final class ContentViewModel: ObservableObject {
+final class ImmersiveViewModel: ObservableObject {
     
     private let session = ARKitSession()
     private let worldInfoProvider = WorldTrackingProvider()
     @Published
-    var model: ContentModel = ContentModel()
+    var model: ImmersiveModel = ImmersiveModel()
 
     func onMakeRealityView() async {
         try? await session.run([worldInfoProvider])
@@ -29,7 +29,7 @@ final class ContentViewModel: ObservableObject {
     }
 
     func onTapDiceEntity() {
-        model.spin = ContentDiceSpinStrategy.allCases.randomElement() ?? .five
+        model.spin = ImmersiveDiceSpinStrategy.allCases.randomElement() ?? .five
         print("spin: \(model.spin)")
     }
     

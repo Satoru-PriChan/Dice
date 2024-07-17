@@ -1,5 +1,5 @@
 //
-//  ContentModel.swift
+//  ImmersiveModel.swift
 //  Dice
 //
 //  Created by kento.yamazaki on 2024/04/03.
@@ -9,15 +9,15 @@ import Foundation
 import simd
 
 
-struct ContentModel {
-    var diceEnlargeStrategy: ContentDiceEnlargeStrategy = .normal
-    var spin: ContentDiceSpinStrategy = .five
+struct ImmersiveModel {
+    var diceEnlargeStrategy: ImmersiveDiceEnlargeStrategy = .normal
+    var spin: ImmersiveDiceSpinStrategy = .five
     /// Entity's position
     var position: SIMD3<Float> = .init(x: 0.0, y: 1.5, z: -1.0)// Just in front of the user's face
     var magnify: SIMD3<Float> = [1.0, 1.0, 1.0]
 }
 
-enum ContentDiceEnlargeStrategy {
+enum ImmersiveDiceEnlargeStrategy {
     case normal
     case enlarge
     
@@ -43,7 +43,7 @@ enum ContentDiceEnlargeStrategy {
         }
     }
     
-    func toggle() -> ContentDiceEnlargeStrategy {
+    func toggle() -> ImmersiveDiceEnlargeStrategy {
         switch self {
         case .normal:
             .enlarge
@@ -53,7 +53,7 @@ enum ContentDiceEnlargeStrategy {
     }
 }
 
-enum ContentDiceSpinStrategy: CaseIterable {
+enum ImmersiveDiceSpinStrategy: CaseIterable {
     case one
     case two
     case three

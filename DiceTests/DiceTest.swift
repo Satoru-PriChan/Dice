@@ -8,7 +8,7 @@
 import Testing
 @testable import Dice
 
-@Suite("Tests of ContentViewModel")
+@Suite("Tests of ImmersiveViewModel")
 actor DiceContentViewModelTestActor {
 
     @Test
