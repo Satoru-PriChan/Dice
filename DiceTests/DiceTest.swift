@@ -15,7 +15,7 @@ actor DiceContentViewModelTestActor {
     func randomeSpin() async throws {
         let viewModel = await ContentViewModel()
         let model = await viewModel.model
-        // Expect the initial value is five
+        // Expect the initial value is back
         #expect(model.spin == .five)
         var result: [ContentDiceSpinStrategy] = []
         // Test ratio of each side of dice after 1000 random spins

@@ -28,22 +28,29 @@ final class ImmersiveViewModel: ObservableObject {
         //        let originFromAnchorTransform = pose.originFromAnchorTransform
     }
 
-    func onTapDiceEntity() {
-        model.spin = ImmersiveDiceSpinStrategy.allCases.randomElement() ?? .five
-        print("spin: \(model.spin)")
+    func onTapDiceEntity(_ dice: ImmersiveDiceModel) {
+        var dice = dice
+        dice.randomSpin()
+        model.diceSet.update(with: dice)
     }
     
-    func onDragDiceEntity(x: Float, y: Float, z: Float) {
-        model.position.x += x*0.0001
-        model.position.y += y*0.0001
-        model.position.z += z*0.0001
+    func onDragDiceEntity(_ dice: ImmersiveDiceModel, x: Float, y: Float, z: Float) {
+        var dice = dice
+        dice.position.x += x*0.0001
+        dice.position.y += y*0.0001
+        dice.position.z += z*0.0001
+        model.diceSet.update(with: dice)
     }
     
-    func onMagnifyEntity(_ magnification: SIMD3<Float>) {
-        model.magnify = magnification
+    func onMagnifyEntity(_ dice: ImmersiveDiceModel, magnification: SIMD3<Float>) {
+        var dice = dice
+        dice.magnify = magnification
+        model.diceSet.update(with: dice)
     }
     
-    func onToggleTapped(_ isOn: Bool) {
-        model.diceEnlargeStrategy = .init(isOn)
+    func onToggleTapped(_ dice: ImmersiveDiceModel, isOn: Bool) {
+        var dice = dice
+        dice.diceEnlargeStrategy = .init(isOn)
+        model.diceSet.update(with: dice)
     }
 }
