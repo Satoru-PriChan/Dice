@@ -28,28 +28,28 @@ final class ImmersiveViewModel: ObservableObject {
         //        let originFromAnchorTransform = pose.originFromAnchorTransform
     }
 
-    func onTapDiceEntity(_ name: String) {
-        var dice = findDice(name)
+    func onTapDiceEntity(_ modelName: String) {
+        var dice = findDice(modelName)
         dice.randomSpin()
         model.diceSet.update(with: dice)
     }
     
-    func onDragDiceEntity(_ name: String, x: Float, y: Float, z: Float) {
-        var dice = findDice(name)
+    func onDragDiceEntity(_ modelName: String, x: Float, y: Float, z: Float) {
+        var dice = findDice(modelName)
         dice.position.x += x*0.0001
         dice.position.y += y*0.0001
         dice.position.z += z*0.0001
         model.diceSet.update(with: dice)
     }
     
-    func onMagnifyEntity(_ name: String, magnification: SIMD3<Float>) {
-        var dice = findDice(name)
+    func onMagnifyEntity(_ modelName: String, magnification: SIMD3<Float>) {
+        var dice = findDice(modelName)
         dice.magnify = magnification
         model.diceSet.update(with: dice)
     }
     
-    func onToggleTapped(_ name: String, isOn: Bool) {
-        var dice = findDice(name)
+    func onToggleTapped(_ modelName: String, isOn: Bool) {
+        var dice = findDice(modelName)
         dice.diceEnlargeStrategy = .init(isOn)
         model.diceSet.update(with: dice)
     }
