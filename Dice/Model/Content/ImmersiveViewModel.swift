@@ -28,29 +28,36 @@ final class ImmersiveViewModel: ObservableObject {
         //        let originFromAnchorTransform = pose.originFromAnchorTransform
     }
 
-    func onTapDiceEntity(_ dice: ImmersiveDiceModel) {
-        var dice = dice
+    func onTapDiceEntity(_ name: String) {
+        var dice = findDice(name)
         dice.randomSpin()
         model.diceSet.update(with: dice)
     }
     
-    func onDragDiceEntity(_ dice: ImmersiveDiceModel, x: Float, y: Float, z: Float) {
-        var dice = dice
+    func onDragDiceEntity(_ name: String, x: Float, y: Float, z: Float) {
+        var dice = findDice(name)
         dice.position.x += x*0.0001
         dice.position.y += y*0.0001
         dice.position.z += z*0.0001
         model.diceSet.update(with: dice)
     }
     
-    func onMagnifyEntity(_ dice: ImmersiveDiceModel, magnification: SIMD3<Float>) {
-        var dice = dice
+    func onMagnifyEntity(_ name: String, magnification: SIMD3<Float>) {
+        var dice = findDice(name)
         dice.magnify = magnification
         model.diceSet.update(with: dice)
     }
     
-    func onToggleTapped(_ dice: ImmersiveDiceModel, isOn: Bool) {
-        var dice = dice
+    func onToggleTapped(_ name: String, isOn: Bool) {
+        var dice = findDice(name)
         dice.diceEnlargeStrategy = .init(isOn)
         model.diceSet.update(with: dice)
+    }
+    
+    private func findDice(_ modelName: String) -> ImmersiveDiceModel {
+        guard var dice = model.diceSet.first(where: { $0.modelName == modelName}) else {
+            fatalError("Cannot found model name: \(modelName)")
+        }
+        return dice
     }
 }
