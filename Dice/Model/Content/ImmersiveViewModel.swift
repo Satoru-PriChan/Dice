@@ -55,7 +55,7 @@ final class ImmersiveViewModel: ObservableObject {
     }
     
     private func findDice(_ modelName: String) -> ImmersiveDiceModel {
-        guard var dice = model.diceSet.first(where: { $0.modelName == modelName}) else {
+        guard let dice = model.diceSet.first(where: { $0.modelName == modelName}) else {
             fatalError("Cannot found model name: \(modelName)")
         }
         return dice
