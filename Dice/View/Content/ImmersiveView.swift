@@ -22,8 +22,8 @@ struct ImmersiveView: View {
     var entityNames: Set<String> {
         Set(entities.map { $0.name })
     }
-
-    var body: some View {
+    
+    private var content: some View {
         VStack {
             RealityView(make: { content in
                 await viewModel.onMakeRealityView()
@@ -38,16 +38,19 @@ struct ImmersiveView: View {
                         await addEntity(from: dice)
                     }
                 }
-            }, update: {
-                let provided: Set<String> = viewModel.model.diceSet.map { $0.modelName }
-                let updated = provided.subtracting(entityNames)
-                debugPrint("updated dices: \(updated), provided: \(provided), entityNames: \(entityNames)")
-                if updated.isEmpty == false {
-                    // Add new entity(ies)
-                    for dice in updated {
-                        await addEntity(from: dice)
+            }, update: { _ in
+                Task {
+                    let provided: Set<String> = Set<String>(viewModel.model.diceSet.map { $0.modelName })
+                    let updated = provided.subtracting(entityNames)
+                    debugPrint("updated dices: \(updated), provided: \(provided), entityNames: \(entityNames)")
+                    if updated.isEmpty == false {
+                        // Add new entity(ies)
+                        for dice in updated {
+                            await addEntity(from: dice)
+                        }
                     }
                 }
+
             })
             .gesture(
                 TapGesture()
@@ -87,7 +90,7 @@ struct ImmersiveView: View {
             )
             VStack {
                 Toggle(
-                    "Enlarge RealityView Content", 
+                    "Enlarge RealityView Content",
                     isOn: .init(
                         get: { viewModel.model.diceEnlargeStrategy.isOnEnlargement },
                         set: { isOn in viewModel.onToggleTapped(isOn) }
@@ -96,12 +99,17 @@ struct ImmersiveView: View {
                     .toggleStyle(.button)
             }.padding().glassBackgroundEffect()
         }
-        .onChange(of: viewModel.model.diceSubtractedRotations) { oldValue, newValue in
-            guard let diff = newValue.subtracting(oldValue),
-                  diff.isEmpty == false else { return }
+
+    }
+
+    var body: some View {
+        content
+                .onChange(of: viewModel.model.diceSubtractedRotations) { oldValue, newValue in
+            let diff: Set<ImmersiveSubtractedDiceRotation> = newValue.symmetricDifference(oldValue)
+            guard diff.isEmpty == false else { return }
             
             for diceRotation in diff {
-                guard let entity = entities.first(where: { $0.name == diceRotation.key }) else {
+                guard let entity: Entity = entities.first(where: { $0.name == diceRotation.key }) else {
                     continue
                 }
                 // This is animation before the dice is set
@@ -110,34 +118,34 @@ struct ImmersiveView: View {
             }
         }
         .onChange(of: viewModel.model.diceSubtractedEnlarges) { oldValue, newValue in
-            guard let diff = newValue.subtracting(oldValue),
-                  diff.isEmpty == false else { return }
+            let diff: Set<ImmersiveSubtractedDiceEnlarge> = newValue.symmetricDifference(oldValue)
+            guard diff.isEmpty == false else { return }
             
             for diceEnlarge in diff {
-                guard let entity = entities.first(where: { $0.name == diceEnlarge.key }) else { continue }
+                guard let entity: Entity = entities.first(where: { $0.name == diceEnlarge.key }) else { continue }
                 entity.transform.scale = diceEnlarge.enlarge.scale
             }
         }
         .onChange(of: viewModel.model.diceSubtractedPositions) { oldValue, newValue in
-            guard let diff = newValue.subtracting(oldValue),
-                  diff.isEmpty == false else { return }
+            let diff: Set<ImmersiveSubtractedDicePosition> = newValue.symmetricDifference(oldValue)
+            guard diff.isEmpty == false else { return }
             
             for dicePosition in diff {
-                guard let entity = entities.first(where: { $0.name == dicePosition.key }) else { continue }
+                guard let entity: Entity = entities.first(where: { $0.name == dicePosition.key }) else { continue }
                 entity.position = dicePosition.position
             }
         }
         .onChange(of: viewModel.model.diceSubtractedMagnifies) { oldValue, newValue in
-            guard let diff = newValue.subtracting(oldValue),
-                  diff.isEmpty == false else { return }
+            let diff: Set<ImmersiveSubtractedDiceMagnify> = newValue.symmetricDifference(oldValue)
+            guard diff.isEmpty == false else { return }
             
             for diceMagnify in diff {
-                guard let entity = entities.first(where: { $0.name == diceMagnify.key }) else { continue }
+                guard let entity: Entity = entities.first(where: { $0.name == diceMagnify.key }) else { continue }
                 entity.transform.scale = diceMagnify.magnify
             }
         }
         .onChange(of: appViewModel.model.diceSet) { oldValue, newValue in
-            let insertedDices = newValue.subtracting(oldValue)
+            let insertedDices: Set<AppDiceModel> = newValue.symmetricDifference(oldValue)
             guard insertedDices.isEmpty == false else { return }
             for insertedDice in insertedDices {
                 // TODO: - Show 3D Entities
