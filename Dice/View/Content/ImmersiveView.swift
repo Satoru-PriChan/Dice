@@ -32,25 +32,11 @@ struct ImmersiveView: View {
                     viewModel.onUpdateSceneEvents()
                 } as? any Cancellable
                 
-                // Add the initial RealityKit entity(ies)
-                if appViewModel.model.diceSet.isEmpty == false {
-                    for dice in appViewModel.model.diceSet {
-                        await addEntity(from: dice)
-                    }
-                }
+                // Initial setup
+//                let models = appViewModel.model.diceSet
+//                viewModel.onChangeAppDiceSet(models)
             }, update: { _ in
-                Task {
-                    let provided: Set<String> = Set<String>(viewModel.model.diceSet.map { $0.modelName })
-                    let updated = provided.subtracting(entityNames)
-                    debugPrint("updated dices: \(updated), provided: \(provided), entityNames: \(entityNames)")
-                    if updated.isEmpty == false {
-                        // Add new entity(ies)
-                        for dice in updated {
-                            await addEntity(from: dice)
-                        }
-                    }
-                }
-
+                // Update
             })
             .gesture(
                 TapGesture()
@@ -88,16 +74,16 @@ struct ImmersiveView: View {
                         )
                     }
             )
-            VStack {
-                Toggle(
-                    "Enlarge RealityView Content",
-                    isOn: .init(
-                        get: { viewModel.model.diceEnlargeStrategy.isOnEnlargement },
-                        set: { isOn in viewModel.onToggleTapped(isOn) }
-                    )
-                )
-                    .toggleStyle(.button)
-            }.padding().glassBackgroundEffect()
+//            VStack {
+//                Toggle(
+//                    "Enlarge RealityView Content",
+//                    isOn: .init(
+//                        get: { viewModel.model.diceEnlargeStrategy.isOnEnlargement },
+//                        set: { isOn in viewModel.onToggleTapped(isOn) }
+//                    )
+//                )
+//                    .toggleStyle(.button)
+//            }.padding().glassBackgroundEffect()
         }
 
     }
@@ -145,16 +131,18 @@ struct ImmersiveView: View {
             }
         }
         .onChange(of: appViewModel.model.diceSet) { oldValue, newValue in
-            let insertedDices: Set<AppDiceModel> = newValue.symmetricDifference(oldValue)
-            guard insertedDices.isEmpty == false else { return }
-            for insertedDice in insertedDices {
-                // TODO: - Show 3D Entities
+            viewModel.onChangeAppDiceSet(newValue)
+        }
+        .onChange(of: viewModel.model.diceSet) { oldValue, newValue in
+            let diff = newValue.symmetricDifference(oldValue)
+            guard diff.isEmpty == false else { return }
+            for model in diff {
+                Task { await addEntity(from: model) }
             }
         }
-
     }
     
-    private func addEntity(from model: ImmersiveDiceModel) async throws {
+    private func addEntity(from model: ImmersiveDiceModel) async {
         guard entities.count < 11 else {
             debugPrint("Already added \(entities.count) entities.")
             return

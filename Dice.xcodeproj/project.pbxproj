@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		370675602C2C43EC0059FAAF /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3706755F2C2C43EC0059FAAF /* MenuViewModel.swift */; };
+		370B43EB2C5504D60074296B /* ImmersiveTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B43EA2C5504D60074296B /* ImmersiveTranslator.swift */; };
 		370B9A042BA33D0000169213 /* simd+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B9A032BA33D0000169213 /* simd+extension.swift */; };
 		370B9A062BA5E17600169213 /* Opener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B9A052BA5E17600169213 /* Opener.swift */; };
 		370B9A082BB0970200169213 /* Angle+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B9A072BB0970200169213 /* Angle+extension.swift */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		3706755F2C2C43EC0059FAAF /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
+		370B43EA2C5504D60074296B /* ImmersiveTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveTranslator.swift; sourceTree = "<group>"; };
 		370B9A032BA33D0000169213 /* simd+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "simd+extension.swift"; sourceTree = "<group>"; };
 		370B9A052BA5E17600169213 /* Opener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opener.swift; sourceTree = "<group>"; };
 		370B9A072BB0970200169213 /* Angle+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Angle+extension.swift"; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			children = (
 				378F1A342BBC8C3C00194BD5 /* ImmersiveViewModel.swift */,
 				378F1A362BBC974900194BD5 /* ImmersiveModel.swift */,
+				370B43EA2C5504D60074296B /* ImmersiveTranslator.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				370675602C2C43EC0059FAAF /* MenuViewModel.swift in Sources */,
 				37F90E902C3E56D50029F28E /* AppViewModel.swift in Sources */,
 				370B9A062BA5E17600169213 /* Opener.swift in Sources */,
+				370B43EB2C5504D60074296B /* ImmersiveTranslator.swift in Sources */,
 				378F1A352BBC8C3C00194BD5 /* ImmersiveViewModel.swift in Sources */,
 				379B22B82B9C70D0007BF19D /* ImmersiveView.swift in Sources */,
 				379B22B62B9C70D0007BF19D /* DiceApp.swift in Sources */,

@@ -131,6 +131,10 @@ extension ImmersiveSubtractedDiceMagnify: Hashable {
 }
 
 struct ImmersiveDiceModel {
+    init(modelName: String) {
+        self.modelName = modelName
+    }
+    
     /// Name of 3D Model to pass the initializer of Entity(RealityKit)
     var modelName: String
     var diceEnlargeStrategy: ImmersiveDiceEnlargeStrategy = .normal

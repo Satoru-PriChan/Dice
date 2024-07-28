@@ -54,6 +54,10 @@ final class ImmersiveViewModel: ObservableObject {
         model.diceSet.update(with: dice)
     }
     
+    func onChangeAppDiceSet(_ newValue: Set<AppDiceModel>) {
+        model.diceSet = ImmersiveTranslator.translate(newValue)
+    }
+    
     private func findDice(_ modelName: String) -> ImmersiveDiceModel {
         guard let dice = model.diceSet.first(where: { $0.modelName == modelName}) else {
             fatalError("Cannot found model name: \(modelName)")
