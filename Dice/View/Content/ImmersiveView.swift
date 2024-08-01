@@ -23,6 +23,7 @@ struct ImmersiveView: View {
         Set(entities.map { $0.name })
     }
     
+    @MainActor
     private var content: some View {
         VStack {
             RealityView(make: { content in
@@ -33,10 +34,12 @@ struct ImmersiveView: View {
                 } as? any Cancellable
                 
                 // Initial setup
-//                let models = appViewModel.model.diceSet
-//                viewModel.onChangeAppDiceSet(models)
-            }, update: { _ in
+                let models = viewModel.model.diceSet
+                addEntities(models, to: &content)
+            }, update: { content in
                 // Update
+                let models = viewModel.model.diceSet
+                addEntities(models, to: &content)
             })
             .gesture(
                 TapGesture()
@@ -133,29 +136,42 @@ struct ImmersiveView: View {
         .onChange(of: appViewModel.model.diceSet) { oldValue, newValue in
             viewModel.onChangeAppDiceSet(newValue)
         }
-        .onChange(of: viewModel.model.diceSet) { oldValue, newValue in
-            let diff = newValue.symmetricDifference(oldValue)
-            guard diff.isEmpty == false else { return }
-            for model in diff {
-                Task { await addEntity(from: model) }
+    }
+    
+    @MainActor
+    private func addEntities(
+        _ dices: Set<ImmersiveDiceModel>,
+        to content: inout RealityViewContent
+    ) {
+        var entities: [Entity] = []
+        if dices.isEmpty == false {
+            dices.forEach { model in
+                Task {
+                    let entity = try await addEntity(from: model)
+                    entities.append(entity)
+                }
+            }
+            entities.forEach { entity in
+                content.add(entity)
             }
         }
     }
     
-    private func addEntity(from model: ImmersiveDiceModel) async {
+    private func addEntity(from model: ImmersiveDiceModel) async throws -> Entity  {
         guard entities.count < 11 else {
             debugPrint("Already added \(entities.count) entities.")
-            return
+            throw NSError(domain: "ImmsersiveView", code: 1, userInfo: ["userInfo": "Already added \(entities.count) entities."])
         }
         
         guard let diceEntity = try? await Entity(named: model.modelName, in: diceContentBundle) else {
             debugPrint("Cannot get entity: \(model.modelName)")
-            return
+            throw NSError(domain: "ImmsersiveView", code: 2, userInfo: ["userInfo": "Cannot get entity: \(model.modelName)"])
         }
         
         diceEntity.name = model.modelName
         diceEntity.position = model.position
         entities.append(diceEntity)
+        return diceEntity
     }
 }
 
