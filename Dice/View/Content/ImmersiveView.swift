@@ -14,6 +14,7 @@ import SwiftUI
 
 struct ImmersiveView: View {
 
+    private let attachmentID = "attachment_id"
     @State private var entities: [Entity] = []
     @State private var sceneUpdateSubscription : (any Cancellable)? = nil
     @StateObject private var viewModel: ImmersiveViewModel = ImmersiveViewModel()
@@ -26,7 +27,7 @@ struct ImmersiveView: View {
     @MainActor
     private var content: some View {
         VStack {
-            RealityView(make: { content in
+            RealityView { content, attachments in
                 await viewModel.onMakeRealityView()
                 // Called per every frame
                 sceneUpdateSubscription = content.subscribe(to: SceneEvents.Update.self) { event in
@@ -36,11 +37,34 @@ struct ImmersiveView: View {
                 // Initial setup
                 let models = viewModel.model.diceSet
                 addEntities(models, to: &content)
-            }, update: { content in
+                
+                if let attachment = attachments.entity(for: attachmentID) {
+                    content.add(attachment)
+                }
+            } update: { content, attachments in
                 // Update
                 let models = viewModel.model.diceSet
                 addEntities(models, to: &content)
-            })
+            } placeholder: {
+                ProgressView()
+            } attachments: {
+                Attachment(id: attachmentID) {
+                    Toggle(
+                        "Enlarge RealityView Content",
+                        isOn: .init(
+                            get: {
+                                viewModel.model.diceSet.randomElement()?.diceEnlargeStrategy.isOnEnlargement ?? false
+                            },
+                            set: {
+                                isOn in viewModel.onToggleTapped(isOn: isOn)
+                            }
+                        )
+                    )
+                    .toggleStyle(.button)
+                    .padding()
+                    .glassBackgroundEffect()
+                }
+            }
             .gesture(
                 TapGesture()
                     .targetedToAnyEntity()
@@ -77,16 +101,6 @@ struct ImmersiveView: View {
                         )
                     }
             )
-//            VStack {
-//                Toggle(
-//                    "Enlarge RealityView Content",
-//                    isOn: .init(
-//                        get: { viewModel.model.diceEnlargeStrategy.isOnEnlargement },
-//                        set: { isOn in viewModel.onToggleTapped(isOn) }
-//                    )
-//                )
-//                    .toggleStyle(.button)
-//            }.padding().glassBackgroundEffect()
         }
 
     }
@@ -148,7 +162,6 @@ struct ImmersiveView: View {
             dices.forEach { model in
                 Task {
                     let entity = try await addEntity(from: model)
-                    entities.append(entity)
                 }
             }
             entities.forEach { entity in

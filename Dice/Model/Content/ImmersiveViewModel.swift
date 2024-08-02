@@ -48,10 +48,14 @@ final class ImmersiveViewModel: ObservableObject {
         model.diceSet.update(with: dice)
     }
     
-    func onToggleTapped(_ modelName: String, isOn: Bool) {
-        var dice = findDice(modelName)
-        dice.diceEnlargeStrategy = .init(isOn)
-        model.diceSet.update(with: dice)
+    func onToggleTapped(isOn: Bool) {
+        var result: Set<ImmersiveDiceModel> =  Set<ImmersiveDiceModel>()
+        model.diceSet.forEach { dice in
+            var dice = dice
+            dice.diceEnlargeStrategy = .init(isOn)
+            result.insert(dice)
+        }
+        model.diceSet = result
     }
     
     func onChangeAppDiceSet(_ newValue: Set<AppDiceModel>) {

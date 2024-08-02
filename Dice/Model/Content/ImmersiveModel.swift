@@ -137,6 +137,9 @@ struct ImmersiveDiceModel {
     
     /// Name of 3D Model to pass the initializer of Entity(RealityKit)
     var modelName: String
+    var attachmentID: String {
+        modelName + "_attachment"
+    }
     var diceEnlargeStrategy: ImmersiveDiceEnlargeStrategy = .normal
     var position: SIMD3<Float> = .init(x: 0.0, y: 1.5, z: -1.0)// Just in front of the user's face
     var magnify: SIMD3<Float> = [1.0, 1.0, 1.0]
