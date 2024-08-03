@@ -18,8 +18,14 @@ final class ImmersiveViewModel: ObservableObject {
     @Published
     var model: ImmersiveModel = ImmersiveModel()
 
-    func onMakeRealityView() async {
+    /// Called on making reality view. This method starts AR session. Also, receive initial set of AppDiceModel to reflect it to the view model.
+    /// This method should be called only once at initialization of RealityView
+    /// - Parameter newValue: Set<AppDiceModel>. Pass initial set of AppDiceModel to reflect it to the view model.
+    func onMakeRealityView(_ newValue: Set<AppDiceModel>) async {
+        // Start AR session
         try? await session.run([worldInfoProvider])
+        // Receive initial AppDiceModel
+        onChangeAppDiceSet(newValue)
     }
     
     func onUpdateSceneEvents() {

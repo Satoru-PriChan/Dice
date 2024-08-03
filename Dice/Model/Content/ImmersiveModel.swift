@@ -165,6 +165,12 @@ struct ImmersiveDiceModel {
     }
 }
 
+extension ImmersiveDiceModel: CustomStringConvertible {
+    var description: String {
+        modelName
+    }
+}
+
 extension ImmersiveDiceModel: Hashable {
     static func == (lhs: ImmersiveDiceModel, rhs: ImmersiveDiceModel) -> Bool {
         return lhs.modelName == rhs.modelName

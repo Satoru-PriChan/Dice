@@ -28,13 +28,14 @@ struct ImmersiveView: View {
     private var content: some View {
         VStack {
             RealityView { content, attachments in
-                await viewModel.onMakeRealityView()
+                debugPrint("⭐️ RealityView make")
+                await viewModel.onMakeRealityView(appViewModel.model.diceSet)
                 // Called per every frame
                 sceneUpdateSubscription = content.subscribe(to: SceneEvents.Update.self) { event in
                     viewModel.onUpdateSceneEvents()
                 } as? any Cancellable
                 
-                // Initial setup
+                // Initial Dice setup
                 let models = viewModel.model.diceSet
                 addEntities(models, to: &content)
                 
@@ -43,6 +44,7 @@ struct ImmersiveView: View {
                 }
             } update: { content, attachments in
                 // Update
+                debugPrint("⭐️ RealityView update")
                 let models = viewModel.model.diceSet
                 addEntities(models, to: &content)
             } placeholder: {
@@ -148,6 +150,7 @@ struct ImmersiveView: View {
             }
         }
         .onChange(of: appViewModel.model.diceSet) { oldValue, newValue in
+            debugPrint("⭐️.onChange(of: appViewModel.model.diceSet: \(appViewModel.model.diceSet)")
             viewModel.onChangeAppDiceSet(newValue)
         }
     }
