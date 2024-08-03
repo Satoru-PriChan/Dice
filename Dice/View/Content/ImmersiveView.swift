@@ -162,6 +162,7 @@ struct ImmersiveView: View {
             dices.forEach { model in
                 Task {
                     let entity = try await addEntity(from: model)
+                    entities.append(entity)
                 }
             }
             entities.forEach { entity in
