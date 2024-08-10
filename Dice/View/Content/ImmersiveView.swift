@@ -36,8 +36,14 @@ struct ImmersiveView: View {
                 } as? any Cancellable
                 
                 // Initial Dice setup
-                let models = viewModel.model.diceSet
-                addEntities(models, to: &content)
+                do {
+                    let models = viewModel.model.diceSet
+                    let entities = try await createEntities(models)
+                    entities.forEach { content.add($0) }
+                    self.entities = entities
+                } catch {
+                    debugPrint(error.localizedDescription)
+                }
                 
                 if let attachment = attachments.entity(for: attachmentID) {
                     content.add(attachment)
@@ -45,8 +51,16 @@ struct ImmersiveView: View {
             } update: { content, attachments in
                 // Update
                 debugPrint("⭐️ RealityView update")
-                let models = viewModel.model.diceSet
-                addEntities(models, to: &content)
+
+                do {
+                    let models = viewModel.model.diceSet
+                    let entities = try await createEntities(models)
+                    entities.forEach { content.add($0) }
+                    self.entities = entities
+                } catch {
+                    debugPrint(error.localizedDescription)
+                }
+
             } placeholder: {
                 ProgressView()
             } attachments: {
@@ -156,20 +170,19 @@ struct ImmersiveView: View {
     }
     
     @MainActor
-    private func addEntities(
-        _ dices: Set<ImmersiveDiceModel>,
-        to content: inout RealityViewContent
-    ) {
-        var entities: [Entity] = []
-        if dices.isEmpty == false {
-            dices.forEach { model in
-                Task {
-                    let entity = try await addEntity(from: model)
-                    entities.append(entity)
+    private func createEntities(
+        _ dices: Set<ImmersiveDiceModel>
+    ) async throws -> [Entity] {
+        try await withThrowingTaskGroup(of: Entity.self) { group in
+            var result: [Entity] = []
+            for dice in dices {
+                group.addTask {
+                    try await addEntity(from: dice)
                 }
-            }
-            entities.forEach { entity in
-                content.add(entity)
+                for try await entity in group {
+                    result.append(entity)
+                }
+                return result
             }
         }
     }
@@ -187,7 +200,6 @@ struct ImmersiveView: View {
         
         diceEntity.name = model.modelName
         diceEntity.position = model.position
-        entities.append(diceEntity)
         return diceEntity
     }
 }
