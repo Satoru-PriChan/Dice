@@ -182,8 +182,8 @@ struct ImmersiveView: View {
                 for try await entity in group {
                     result.append(entity)
                 }
-                return result
             }
+            return result
         }
     }
     
