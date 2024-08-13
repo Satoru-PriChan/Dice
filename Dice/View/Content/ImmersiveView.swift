@@ -41,8 +41,9 @@ struct ImmersiveView: View {
                     let entities = try await createEntities(models)
                     entities.forEach { content.add($0) }
                     self.entities = entities
+                    debugPrint("🌕Succeeded adding initial entities")
                 } catch {
-                    debugPrint(error.localizedDescription)
+                    debugPrint("🌕createEntities error:  \(error.localizedDescription)")
                 }
                 
                 if let attachment = attachments.entity(for: attachmentID) {
@@ -58,14 +59,20 @@ struct ImmersiveView: View {
                 
                 // Addition
                 let added: Set<String> = newValuesSet.subtracting(oldValuesSet)
+                debugPrint("⭐️ added: \(added.count)")
                 added.forEach {
-                    if let entity = try? Entity.load(named: $0) {
+                    do {
+                        let entity = try Entity.load(named: $0, in: diceContentBundle)
                         content.add(entity)
                         self.entities.append(entity)
+                        debugPrint("💀Entity load success")
+                    } catch {
+                        debugPrint("💀Entity load error: \(error.localizedDescription)")
                     }
                 }
                 // Deletion
                 let deleted = oldValuesSet.subtracting(newValuesSet)
+                debugPrint("⭐️ deleted: \(deleted.count)")
                 deleted.forEach { deletedName in
                     if let deletedEntity = self.entities.first(where: { $0.name == deletedName }),
                        let deletedIndex = self.entities.firstIndex(of: deletedEntity) {
@@ -176,7 +183,7 @@ struct ImmersiveView: View {
             }
         }
         .onChange(of: appViewModel.model.diceSet) { oldValue, newValue in
-            debugPrint("⭐️.onChange(of: appViewModel.model.diceSet: \(appViewModel.model.diceSet)")
+            debugPrint("⭐️.onChange(of: appViewModel.model.diceSet: \(appViewModel.model.diceSet.count)")
             viewModel.onChangeAppDiceSet(newValue)
         }
     }
