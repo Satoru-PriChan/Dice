@@ -52,15 +52,27 @@ struct ImmersiveView: View {
                 // Update
                 debugPrint("⭐️ RealityView update")
 
-                do {
-                    let models = viewModel.model.diceSet
-                    let entities = try await createEntities(models)
-                    entities.forEach { content.add($0) }
-                    self.entities = entities
-                } catch {
-                    debugPrint(error.localizedDescription)
+                let models = viewModel.model.diceSet
+                let newValuesSet: Set<String> = Set<String>(models.map { $0.modelName })
+                let oldValuesSet: Set<String> = Set<String>(entities.map { $0.name })
+                
+                // Addition
+                let added: Set<String> = newValuesSet.subtracting(oldValuesSet)
+                added.forEach {
+                    if let entity = try? Entity.load(named: $0) {
+                        content.add(entity)
+                        self.entities.append(entity)
+                    }
                 }
-
+                // Deletion
+                let deleted = oldValuesSet.subtracting(newValuesSet)
+                deleted.forEach { deletedName in
+                    if let deletedEntity = self.entities.first(where: { $0.name == deletedName }),
+                       let deletedIndex = self.entities.firstIndex(of: deletedEntity) {
+                        content.remove(deletedEntity)
+                        self.entities.remove(at: deletedIndex)
+                    }
+                }
             } placeholder: {
                 ProgressView()
             } attachments: {
