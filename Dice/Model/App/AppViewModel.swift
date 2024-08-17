@@ -16,6 +16,6 @@ final class AppViewModel: ObservableObject {
             model.shouldShowImmersiveView = true
         }
         
-        model.diceSet.insert(dice)
+        model.diceList.append(dice)
     }
 }

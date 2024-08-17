@@ -29,7 +29,7 @@ struct ImmersiveView: View {
         VStack {
             RealityView { content, attachments in
                 debugPrint("⭐️ RealityView make")
-                await viewModel.onMakeRealityView(appViewModel.model.diceSet)
+                await viewModel.onMakeRealityView(appViewModel.model.diceList)
                 // Called per every frame
                 sceneUpdateSubscription = content.subscribe(to: SceneEvents.Update.self) { event in
                     viewModel.onUpdateSceneEvents()
@@ -60,9 +60,16 @@ struct ImmersiveView: View {
                 // Addition
                 let added: Set<String> = newValuesSet.subtracting(oldValuesSet)
                 debugPrint("⭐️ added: \(added.count)")
-                added.forEach {
+                added.forEach { addedName in
+                    guard let model = viewModel.model.diceSet.first(where: { model in
+                        model.modelName == addedName
+                    }) else { return }
+                    
                     do {
-                        let entity = try Entity.load(named: $0, in: diceContentBundle)
+                        let entity = try addEntity(
+                            modelName: addedName,
+                            position: model.position
+                        )
                         content.add(entity)
                         self.entities.append(entity)
                         debugPrint("💀Entity load success")
@@ -182,8 +189,8 @@ struct ImmersiveView: View {
                 entity.transform.scale = diceMagnify.magnify
             }
         }
-        .onChange(of: appViewModel.model.diceSet) { oldValue, newValue in
-            debugPrint("⭐️.onChange(of: appViewModel.model.diceSet: \(appViewModel.model.diceSet.count)")
+        .onChange(of: appViewModel.model.diceList) { oldValue, newValue in
+            debugPrint("⭐️.onChange(of: appViewModel.model.diceList: \(appViewModel.model.diceList.count)")
             viewModel.onChangeAppDiceSet(newValue)
         }
     }
@@ -219,6 +226,23 @@ struct ImmersiveView: View {
         
         diceEntity.name = model.modelName
         diceEntity.position = model.position
+        return diceEntity
+    }
+    
+    /// Sychronous version of add entity
+    private func addEntity(modelName: String, position: SIMD3<Float>) throws -> Entity {
+        guard entities.count < 11 else {
+            debugPrint("Already added \(entities.count) entities.")
+            throw NSError(domain: "ImmsersiveView", code: 1, userInfo: ["userInfo": "Already added \(entities.count) entities."])
+        }
+        
+        guard let diceEntity = try? Entity.load(named: modelName, in: diceContentBundle) else {
+            debugPrint("Cannot get entity: \(modelName)")
+            throw NSError(domain: "ImmsersiveView", code: 2, userInfo: ["userInfo": "Cannot get entity: \(modelName)"])
+        }
+        
+        diceEntity.name = modelName
+        diceEntity.position = position
         return diceEntity
     }
 }

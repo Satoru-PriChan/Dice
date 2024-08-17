@@ -8,11 +8,17 @@
 import Foundation
 
 enum ImmersiveTranslator {
-    static func translate(_ appDiceModelSet: Set<AppDiceModel>) -> Set<ImmersiveDiceModel> {
-        Set<ImmersiveDiceModel>(appDiceModelSet.map { Self.translate($0) })
+    static func translate(_ appDiceModelList: [AppDiceModel]) -> Set<ImmersiveDiceModel> {
+        var result: [ImmersiveDiceModel] = []
+        for (number, element) in appDiceModelList.enumerated() {
+            result.append(Self.translate(element, at: number))
+        }
+        return Set<ImmersiveDiceModel>(result)
     }
     
-    private static func translate(_ model: AppDiceModel) -> ImmersiveDiceModel {
-        ImmersiveDiceModel(modelName: model.modelName)
+    private static func translate(_ model: AppDiceModel, at index: Int) -> ImmersiveDiceModel {
+        var model = ImmersiveDiceModel(modelName: model.modelName)
+        model.position = ImmersiveModel.initialPositions[index]
+        return model
     }
 }

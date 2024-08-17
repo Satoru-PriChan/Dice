@@ -10,7 +10,7 @@ import simd
 
 struct AppModel {
     var shouldShowImmersiveView: Bool = false
-    var diceSet: Set<AppDiceModel> = Set<AppDiceModel>()
+    var diceList: [AppDiceModel] = []
 }
 
 struct AppDiceModel: Identifiable, Equatable, Hashable {

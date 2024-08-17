@@ -40,17 +40,17 @@ struct ImmersiveModel {
         return result
     }
     /// Entity's initial positions(fixed)
-    private let initialPositions: [SIMD3<Float>] = [
+    static let initialPositions: [SIMD3<Float>] = [
         .init(x: 0.0, y: 1.5, z: -1.0),// Just in front of the user's face
-        .init(x: 2.0, y: 1.5, z: -1.0),
-        .init(x: -2.0, y: 1.5, z: -1.0),
-        .init(x: 0.0, y: 3.5, z: -1.0),
-        .init(x: 2.0, y: 3.5, z: -1.0),
-        .init(x: -2.0, y: 3.5, z: -1.0),
-        .init(x: 0.0, y: 1.75, z: -3.0),
-        .init(x: 2.0, y: 1.75, z: -3.0),
-        .init(x: -2.0, y: 1.75, z: -3.0),
-        .init(x: 0.0, y: 1.25, z: -3.0),
+        .init(x: 1.0, y: 1.5, z: -1.0),
+        .init(x: -1.0, y: 1.5, z: -1.0),
+        .init(x: 0.0, y: 2.5, z: -1.0),
+        .init(x: 1.0, y: 2.5, z: -1.0),
+        .init(x: -1.0, y: 2.5, z: -1.0),
+        .init(x: 0.0, y: 1.75, z: -2.0),
+        .init(x: 1.0, y: 1.75, z: -2.0),
+        .init(x: -1.0, y: 1.75, z: -2.0),
+        .init(x: 0.0, y: 1.25, z: -2.0),
     ]
 }
 
